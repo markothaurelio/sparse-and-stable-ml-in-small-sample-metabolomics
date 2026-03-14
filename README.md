@@ -25,37 +25,37 @@ To determine:
 * Evaluation of calibration and prediction uncertainty.
 
 ## Visual diagram of training process
-Nested Cross-Validation Structure
+
+Nested Cross-Validation (5 Outer Folds)
 
 FULL DATASET
-     │
-     ▼
-OUTER CROSS-VALIDATION (Model Evaluation)
+│
+└── OUTER CROSS-VALIDATION (Model Evaluation)
 
-Fold 1
- ├─ Test set: Fold 1
- └─ Training set: Folds 2,3,4,5
-      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
+    ├── Fold 1
+    │   ├── Test: Fold 1
+    │   └── Train: Folds 2,3,4,5
+    │       └── INNER CV (Hyperparameter Tuning)
 
-Fold 2
- ├─ Test set: Fold 2
- └─ Training set: Folds 1,3,4,5
-      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
+    ├── Fold 2
+    │   ├── Test: Fold 2
+    │   └── Train: Folds 1,3,4,5
+    │       └── INNER CV
 
-Fold 3
- ├─ Test set: Fold 3
- └─ Training set: Folds 1,2,4,5
-      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
+    ├── Fold 3
+    │   ├── Test: Fold 3
+    │   └── Train: Folds 1,2,4,5
+    │       └── INNER CV
 
-Fold 4
- ├─ Test set: Fold 4
- └─ Training set: Folds 1,2,3,5
-      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
+    ├── Fold 4
+    │   ├── Test: Fold 4
+    │   └── Train: Folds 1,2,3,5
+    │       └── INNER CV
 
-Fold 5
- ├─ Test set: Fold 5
- └─ Training set: Folds 1,2,3,4
-      └─ INNER CROSS-VALIDATION (Hyperparameter Search) → Inner CV
+    └── Fold 5
+        ├── Test: Fold 5
+        └── Train: Folds 1,2,3,4
+            └── INNER CV
 
 ## Key Focus
 
