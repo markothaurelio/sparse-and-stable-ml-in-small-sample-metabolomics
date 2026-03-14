@@ -24,6 +24,24 @@ To determine:
 * Comparison of naive vs nested validation performance.
 * Evaluation of calibration and prediction uncertainty.
 
+## Visual diagram of training process
+  FULL DATASET
+     │
+     ▼
+OUTER CV (model evaluation)
+
+Fold1 test
+ └─ Train folds 2-5
+     └─ INNER CV (hyperparameter search)
+
+Fold2 test
+ └─ Train folds 1,3,4,5
+     └─ INNER CV
+
+Fold3 test
+ └─ Train folds 1,2,4,5
+     └─ INNER CV
+
 ## Key Focus
 
 * Stability of selected metabolites
