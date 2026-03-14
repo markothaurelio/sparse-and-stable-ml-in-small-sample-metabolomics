@@ -27,26 +27,35 @@ To determine:
 ## Visual diagram of training process
 Nested Cross-Validation Structure
 
-Full Dataset
-   │
-   ▼
-Outer CV (Model Evaluation)
+FULL DATASET
+     │
+     ▼
+OUTER CROSS-VALIDATION (Model Evaluation)
 
-For each outer fold:
+Fold 1
+ ├─ Test set: Fold 1
+ └─ Training set: Folds 2,3,4,5
+      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
 
-1. Hold out one fold as the test set.
-2. Use the remaining folds as the training set.
-3. Run inner cross-validation on the training set to tune hyperparameters.
-4. Train the model with the best hyperparameters.
-5. Evaluate on the held-out outer test fold.
+Fold 2
+ ├─ Test set: Fold 2
+ └─ Training set: Folds 1,3,4,5
+      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
 
-Example (5 folds):
+Fold 3
+ ├─ Test set: Fold 3
+ └─ Training set: Folds 1,2,4,5
+      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
 
-Fold 1 → Test: [1] | Train: [2,3,4,5] → Inner CV
-Fold 2 → Test: [2] | Train: [1,3,4,5] → Inner CV
-Fold 3 → Test: [3] | Train: [1,2,4,5] → Inner CV
-Fold 4 → Test: [4] | Train: [1,2,3,5] → Inner CV
-Fold 5 → Test: [5] | Train: [1,2,3,4] → Inner CV
+Fold 4
+ ├─ Test set: Fold 4
+ └─ Training set: Folds 1,2,3,5
+      └─ INNER CROSS-VALIDATION (Hyperparameter Search)
+
+Fold 5
+ ├─ Test set: Fold 5
+ └─ Training set: Folds 1,2,3,4
+      └─ INNER CROSS-VALIDATION (Hyperparameter Search) → Inner CV
 
 ## Key Focus
 
