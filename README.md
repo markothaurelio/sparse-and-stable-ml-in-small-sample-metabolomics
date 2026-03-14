@@ -28,9 +28,7 @@ To determine:
 
 Nested Cross-Validation (5 Outer Folds)
 
-FULL DATASET
-│
-└── OUTER CROSS-VALIDATION (Model Evaluation)
+OUTER CROSS-VALIDATION (Model Evaluation)
 
     ├── Fold 1
     │   ├── Test: Fold 1
